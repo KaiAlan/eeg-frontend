@@ -5,6 +5,7 @@ import { TopCategory } from "@/config/category";
 import { recommendedProducts, BestSeller } from "@/data/product";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+ 
 import { useRef } from "react";
 
 export default function Home() {
