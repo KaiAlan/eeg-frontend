@@ -6,8 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 
-export const description =
-  "A Sign Up page with one column for email input and two buttons for auth signup from google and apple.";
+const description = "A Sign Up page with one column for email input and two buttons for auth signup from google and apple.";
 
   export const metadata: Metadata = {
     title: "Sign Up - EEG",
@@ -34,9 +33,11 @@ const SignUp = () => {
               required
             />
           </div>
+          <Link href='/'> 
           <Button type="submit" className="w-full bg-black font-semibold">
             Continue
           </Button>
+          </Link>
           <Button variant='ghost' className="w-full text-muted-foreground pointer-events-none">
             <Separator className="w-1/3 mx-1" />
             or continue with
@@ -68,7 +69,7 @@ const SignUp = () => {
         </div>
         <div className="mt-4 text-center text-sm">
           Already have an account?{" "}
-          <Link href="#">
+          <Link href="/auth/login">
             <Button variant="link" className="px-0 text-black underline">
               Login
             </Button>

@@ -7,8 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 
-export const description =
-  "A login page with two columns. The first column has the login form with email and password. There's a Forgot your passwork link and a link to sign up if you do not have an account. The second column has a cover image.";
+const description = "A login page with two columns. The first column has the login form with email and password. There's a Forgot your passwork link and a link to sign up if you do not have an account. The second column has a cover image.";
 
   export const metadata: Metadata = {
     title: "Login - EEG",
@@ -48,9 +47,11 @@ const Login = () => {
               </div>
               <Input id="password" type="password" placeholder="* * * * * *" required />
             </div>
+            <Link href='/'>
             <Button type="submit" className="w-full bg-black font-semibold">
               Login
             </Button>
+            </Link>
             <Button variant='ghost' className="w-full text-muted-foreground pointer-events-none">
             <Separator className="w-1/3 mx-1" />
             or continue with
@@ -65,7 +66,7 @@ const Login = () => {
           </div>
           <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}
-            <Link href="#">
+            <Link href="/auth/register">
             <Button variant='link' className="px-0 text-black underline">Sign up</Button>
               
             </Link>
