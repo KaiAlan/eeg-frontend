@@ -18,6 +18,7 @@ import { Card, CardContent } from "./ui/card";
 
 import { cn } from "@/lib/utils";
 import { Slider } from "@/components/ui/slider";
+import OpenRequestCard from "./open-request-dialog";
 
 
 const FilterSidebar = () => {
@@ -83,12 +84,7 @@ const FilterSidebar = () => {
         </div>
       </div>
 
-      <Card className="bg-primary text-white text-lg font-semibold text-center rounded-md">
-        <CardContent className="pt-6 gap-4">
-                <p>Didn&apos;t find what you were looking for?</p>
-                <Button variant='default' className="mt-4 py-6 px-6 bg-black rounded-full font-semibold hover:bg-black/80">REQUEST HERE</Button>
-        </CardContent>
-      </Card>
+      <OpenRequestCard />
     </div>
   );
 };

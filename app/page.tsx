@@ -5,8 +5,9 @@ import { TopCategory } from "@/config/category";
 import { recommendedProducts, BestSeller } from "@/data/product";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
- 
 import { useRef } from "react";
+import Image from "next/image";
+import Sidebar from "@/components/sidebar";
 
 export default function Home() {
   const scrollRef = useRef<HTMLDivElement | null>(null)
@@ -21,7 +22,26 @@ export default function Home() {
     }
   };
   return (
+    <section className="flex mt-8 relative">
+        <aside className=" w-72 h-full desktop:flex flex-col justify-start items-start sticky top-24 overflow-y-scroll">
+        <Sidebar />
+        </aside>
+        <div className="max-w-[1176px] w-full flex flex-col justify-start px-4 mx-auto desktop:max-w-full desktop:mx-0 desktop:pl-12">
+
+
     <div className="flex flex-col justify-start items-start gap-16 w-full h-full">
+      <div className="w-full flex justify-between items-center bg-white px-32 py-10">
+      <div className=" flex flex-col justify-start items-start gap-4 w-[500px] font-[500]">
+        <h1 className="text-3xl">Get Upto 50% Off On Selected Products</h1>
+        <Button variant='default' size='lg' className="text-lg uppercase py-6">Shop Now</Button>
+      </div>
+      <Image
+      src='/product/steel-3.png'
+      alt='ad-product'
+      width={300}
+      height={300}
+      />
+      </div>
       <section className="flex flex-col justify-start items-start gap-4 w-full">
         <h1 className="text-2xl font-medium capitalize">Previous Orders</h1>
         <div className="w-full flex justify-start items-center gap-8">
@@ -92,7 +112,7 @@ export default function Home() {
                       {item.seller}
                     </span>
                   </div>
-                  <span className="text-sm font-extralight">City, State</span>
+                  {/* <span className="text-sm font-extralight">City, State</span> */}
                   <span className="text-lg font-semibold">{item.price}</span>
                 </CardContent>
               </Card>
@@ -169,5 +189,7 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </div>
+    </section>
   );
 }
