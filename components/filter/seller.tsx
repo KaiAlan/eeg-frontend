@@ -75,9 +75,9 @@ export function FilterSellerCheckbox() {
                   Select the sellers you want to see products of.
                 </FormDescription>
               </div>
-              {items.map((item) => (
+              {items.map((item, idx) => (
                 <FormField
-                  key={item.id}
+                  key={idx}
                   control={form.control}
                   name="items"
                   render={({ field }) => {

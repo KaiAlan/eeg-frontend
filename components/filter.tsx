@@ -18,7 +18,7 @@ import { Card, CardContent } from "./ui/card";
 
 import { cn } from "@/lib/utils";
 import { Slider } from "@/components/ui/slider";
-import OpenRequestCard from "./open-request-dialog";
+import OpenRequestDialog from "./open-request-dialog";
 
 
 const FilterSidebar = () => {
@@ -84,7 +84,7 @@ const FilterSidebar = () => {
         </div>
       </div>
 
-      <OpenRequestCard />
+      <OpenRequestDialog />
     </div>
   );
 };

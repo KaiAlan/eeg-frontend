@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
 import Navbar from "@/components/navbar";
 import "./globals.css";
+import Providers from "./providers";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,7 +18,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "EEG",
-  description: "Environmental Exchange Group Home page, We Connect Quality Products with the Right Deals.",
+  description:
+    "Environmental Exchange Group Home page, We Connect Quality Products with the Right Deals.",
 };
 
 export default function RootLayout({
@@ -30,13 +32,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen flex flex-col bg-background antialiased`}
       >
-        <div className="w-full relative">
-          <Navbar />
+        <Providers>
+          <div className="w-full relative">
+            <Navbar />
           </div>
           <main className="max-w-[1512px] w-full mx-auto px-8 py-20 pt-40 out:px-0">
-          {children}
-          <Toaster />
+            {children}
+            <Toaster />
           </main>
+        </Providers>
       </body>
     </html>
   );

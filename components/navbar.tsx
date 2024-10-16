@@ -3,11 +3,11 @@
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NavConfig } from "@/config/nav";
+// import { NavConfig } from "@/config/nav";
 import { Category } from "@/config/category";
 import { Button } from "./ui/button";
-import { cn } from "@/lib/utils";
-import { Input } from "./ui/input";
+// import { cn } from "@/lib/utils";
+// import { Input } from "./ui/input";
 import {
   Sheet,
   // SheetClose,
@@ -19,6 +19,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Sidebar from "./sidebar";
+import { SearchBox } from "./search";
 // import logo from './motxion-logo.svg'
 
 const Navbar = () => {
@@ -40,9 +41,9 @@ const Navbar = () => {
           </Link>
           
         </div>
-        <div className="flex justify-end items-center gap-6 h-12 w-full">
-          <div className="w-full h-full flex justify-end items-center">
-            <Input
+        <div className="flex justify-end items-center gap-6 h-10 w-full">
+          {/* <div className="w-full h-full flex justify-end items-center"> */}
+            {/* <Input
               type="text"
               className="h-full w-2/3 rounded-lg bg-white border-muted border-r-0 text-lg rounded-r-none"
             />
@@ -56,8 +57,9 @@ const Navbar = () => {
                 alt="Logo"
                 className="w-8 z-[70] font-bold text-white"
               />
-            </Button>
-          </div>
+            </Button> */}
+            <SearchBox />
+          {/* </div> */}
           <Link
             href="/auth/login"
             className={
@@ -124,7 +126,7 @@ const Navbar = () => {
                 All
               </Button>
             </SheetTrigger>
-            <SheetContent side='left'>
+            <SheetContent side='left' className="overflow-y-scroll">
               <Sidebar />
             </SheetContent>
           </Sheet>

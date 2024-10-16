@@ -1,12 +1,12 @@
-import { CopyIcon } from "@radix-ui/react-icons";
+
 
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
+//   DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
+//   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -17,7 +17,7 @@ import { Card, CardContent } from "./ui/card";
 import { Textarea } from "./ui/textarea";
 import Link from "next/link";
 
-const OpenRequestCard = () => {
+const OpenRequestDialog = () => {
   return (
     <Dialog>
       <Card className="bg-primary text-white text-lg font-semibold text-center rounded-md">
@@ -84,4 +84,4 @@ const OpenRequestCard = () => {
   );
 };
 
-export default OpenRequestCard;
+export default OpenRequestDialog;

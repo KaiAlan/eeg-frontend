@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "./ui/button";
-import { useRouter } from "next/navigation";
-import { Card, CardContent } from "./ui/card";
+// import { useRouter } from "next/navigation";
+// import { Card, CardContent } from "./ui/card";
 import { useState } from "react";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 
@@ -13,8 +13,8 @@ import {
 } from "@/components/ui/collapsible";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
-import { NavConfig } from "@/config/nav";
+// import { usePathname } from "next/navigation";
+// import { NavConfig } from "@/config/nav";
 import OpenRequestCard from "./open-request-dialog";
 import { Separator } from "./ui/separator";
 
@@ -22,7 +22,7 @@ const Sidebar = () => {
   const [isOpen, setIsOpen] = useState<boolean[]>(
     Array(Category.length).fill(false)
   );
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
   const handleOpenChange = (index: number) => {
     setIsOpen((prevState) => {
