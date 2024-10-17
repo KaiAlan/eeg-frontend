@@ -14,7 +14,8 @@ export const getAllProducts = async(): Promise<any> => {
     };
 
     const response = fetch(
-        `https://eeg-backend-hfehdmd4hxfagsgu.canadacentral-01.azurewebsites.net/api/users/products/`,
+        `https://eeg-backend-hfehdmd4hxfagsgu.canadacentral-01.azurewebsites.net/api/users/product/`,
+        //'http://localhost:8000/api/users/product/',
         
         options
     )

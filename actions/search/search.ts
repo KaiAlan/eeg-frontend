@@ -12,14 +12,10 @@ type Product = {
     seller_name: string;
 };
 
-type SearchResponse = {
-    results: Product[];
-    recommendations: Product[]
-}
 // const base_url = process.env.BACKEND_BASE_URL
 
 
-export const getSearch = async({value}:{value: string}): Promise<SearchResponse> => {
+export const getSearch = async({value}:{value: string}): Promise<Product[]> => {
     const options = {
         method: "GET",
         headers: {
@@ -28,8 +24,8 @@ export const getSearch = async({value}:{value: string}): Promise<SearchResponse>
     };
 
     const response = fetch(
-        `https://eeg-backend-hfehdmd4hxfagsgu.canadacentral-01.azurewebsites.net/api/users/search/?q=${value}`,
-        
+        `https://eeg-backend-hfehdmd4hxfagsgu.canadacentral-01.azurewebsites.net/api/users/product/search?q=${value}`,
+        //`http://localhost:8000/api/users/product/search?q=${value}`,
         options
     )
         .then((response) => response.json())
