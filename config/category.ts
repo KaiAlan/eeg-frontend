@@ -2,40 +2,37 @@
 
 export const Category = [
     {
-        name: 'steel',
+        name: 'Steel Pipes',
     },
     {
-        name: 'iron',
+        name: 'Cement Bags',
     },
     {
-        name: 'bronze',
+        name: 'Iron Rods',
     },
     {
-        name: 'metal-1',
+        name: 'Chemicals',
     },
     {
-        name: 'metal-2',
+        name: 'Welding Equipment',
     },
     {
-        name: 'chemical-1',
+        name: 'Copper Wires',
     },
     {
-        name: 'chemical-2',
+        name: 'Generators',
     },
     {
-        name: 'chemical-3',
+        name: 'Coal',
     },
     {
-        name: 'chemical-4',
+        name: 'Iron Ore',
     },
     {
-        name: 'chemical-4',
+        name: 'Steel Bars',
     },
     {
-        name: 'chemical-4',
-    },
-    {
-        name: 'chemical-4',
+        name: 'Industrial Lubricant',
     },
 
 ]

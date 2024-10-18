@@ -10,7 +10,7 @@ import { getSearchResultsByCategory } from '@/actions/search/search-category';
 
 
 const BrowseProduct = async({ params }: { params: { slug: string } }) => {
-    
+  const category = decodeURIComponent(params.slug)
   const queryClient = new QueryClient()
 
   await queryClient.prefetchQuery({
@@ -23,7 +23,7 @@ const BrowseProduct = async({ params }: { params: { slug: string } }) => {
     <div>
             <div>
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <SearchByCategory category={params.slug} />
+        <SearchByCategory category={category} />
         </HydrationBoundary>
     </div>
     </div>

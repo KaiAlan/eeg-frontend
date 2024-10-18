@@ -16,6 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import Image from "next/image";
 
 const FormSchema = z.object({
     searchKey: z.string(),
@@ -59,9 +60,11 @@ export function SearchBox() {
               variant="menu"
               className="bg-white h-full rounded-lg rounded-l-none hover:border-white hover:bg-primary border-muted border-l-0"
             >
-              <img
+              <Image
                 src="/icons/search.svg"
                 alt="Logo"
+                width={0}
+                height={0}
                 className="w-6 z-[70] font-bold text-white"
               />
             </Button>

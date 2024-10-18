@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useRef } from "react";
 import Image from "next/image";
 import Sidebar from "@/components/sidebar";
+import Link from "next/link";
 // import { getAllProducts } from "@/actions/products/all-products";
 
 export default function Home() {
@@ -38,6 +39,7 @@ export default function Home() {
               <h1 className="text-2xl">
                 Get Upto 50% Off On Selected Products
               </h1>
+              <Link href='/shop'>
               <Button
                 variant="default"
                 size="lg"
@@ -45,6 +47,7 @@ export default function Home() {
               >
                 Shop Now
               </Button>
+              </Link>
             </div>
             <Image
               src="/product/steel-3.png"

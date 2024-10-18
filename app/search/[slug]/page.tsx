@@ -12,6 +12,7 @@ import SearchResults from '@/components/search-results';
 
 const BrowseSearchedProduct = async ({ params }: { params: { slug: string } }) => {
 
+  const searchKeyword = decodeURIComponent(params.slug)
   const queryClient = new QueryClient()
 
   await queryClient.prefetchQuery({
@@ -22,7 +23,7 @@ const BrowseSearchedProduct = async ({ params }: { params: { slug: string } }) =
   return (
     <div>
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <SearchResults searchKey={params.slug} />
+        <SearchResults searchKey={searchKeyword} />
         </HydrationBoundary>
     </div>
   )
