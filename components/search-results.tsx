@@ -1,4 +1,5 @@
 "use client";
+"use client";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
