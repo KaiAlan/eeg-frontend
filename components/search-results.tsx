@@ -1,5 +1,4 @@
-'use client'
-
+"use client";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
@@ -92,4 +91,4 @@ const SearchResults = ({searchKey}: {searchKey: string}) => {
   )
 }
 
-export default SearchResults
+export default SearchResults;
