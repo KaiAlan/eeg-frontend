@@ -15,6 +15,8 @@ const SearchByCategory = ({category}: {category: string}) => {
     const data = AllProductsData.filter((product) => {
       if (product.subCategory === category) {
         return product
+      } else if (product.seller.name === category) {
+        return product
       }
     })
 

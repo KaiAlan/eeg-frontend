@@ -81,7 +81,7 @@ const DiscountedProductsPage = () => {
                   width={80}
                   height={10}
                 />
-                <span>({item.rating})</span>
+                <span className="text-sm">({item.rating})</span>
                 </span>
                 <span className="text-base font-semibold text-black">
                     ${item.price}
