@@ -1,7 +1,7 @@
 "use client";
 
 // import { previousOrders } from "@/data/order";
-import { Product } from "@/data/dummy/types";
+// import { Product } from "@/data/dummy/types";
 import { TopCategory } from "@/config/category";
 import { BestSeller } from "@/data/product";
 import {
@@ -82,7 +82,7 @@ export default function Home() {
                   </h1>
                   <div className="w-full flex justify-start items-center gap-8">
                     {previousOrders.map((item, index) => {
-                      const path = encodeURIComponent(item.productName ?? '');
+                      const path = encodeURIComponent(item.productName + '--' + item.productId)
                       return (
                         <Card
                         key={index}
@@ -179,11 +179,11 @@ export default function Home() {
                   className="w-full flex justify-start items-center gap-8 select-none overflow-y-scroll scroll-smooth"
                 >
                   {recommendedProducts.map((item, index) => {
-                    const path = encodeURIComponent(item.productName);
+                    const path = encodeURIComponent(item.productName + '--' + item.productId)
                     return (
-                      <Link href={`/product/${path}`} >
+                      <Link href={`/product/${path}`}  key={index} >
                       <Card
-                      key={index}
+                     
                       className=" max-w-[300px] min-w-[230px] rounded-sm select-none cursor-pointer relative"
                     >
                       <CardContent className="flex flex-col gap-2 pt-6">

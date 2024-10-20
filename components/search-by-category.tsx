@@ -38,7 +38,7 @@ const SearchByCategory = ({category}: {category: string}) => {
   return (
     <div className="w-full grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
       {data.map((item, index) => {
-        const path = encodeURIComponent(item.productName);
+        const path = encodeURIComponent(item.productName + '--' + item.productId);
         return (
           <Card
             onClick={() => router.push(`/product/${path}`)}
