@@ -38,8 +38,8 @@ export default function RootLayout({
           </div>
           <main className="max-w-[1512px] w-full mx-auto px-8 py-20 pt-40 out:px-0">
             {children}
-            <Toaster />
           </main>
+          <Toaster />
         </Providers>
       </body>
     </html>

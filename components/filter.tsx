@@ -21,7 +21,10 @@ import { Slider } from "@/components/ui/slider";
 import OpenRequestDialog from "./open-request-dialog";
 
 
-const FilterSidebar = () => {
+const FilterSidebar = ({sellers}:{sellers: {
+  id: string;
+  label: string;
+}[]}) => {
   return (
     <div className="w-full flex flex-col justify-start items-start space-y-1 gap-4">
       <Dialog>
@@ -65,7 +68,7 @@ const FilterSidebar = () => {
       </Dialog>
       <Card className="rounded-sm">
         <CardContent className="pt-6">
-          <FilterSellerCheckbox />
+          <FilterSellerCheckbox sellers={sellers} />
         </CardContent>
       </Card>
 

@@ -19,12 +19,17 @@ import Sidebar from "@/components/sidebar";
 import Link from "next/link";
 import { useUserStore } from "@/stores/user-store";
 import { AllProductsData } from "@/data/dummy/product";
+import { useCartStore } from "@/stores/cart-store";
+import { Product } from "@/data/dummy/types";
+import { toast } from "sonner";
+
 // import { getAllProducts } from "@/actions/products/all-products";
 
 export default function Home() {
   const { user } = useUserStore();
   const recommendedProducts = AllProductsData.slice(0,6)
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const { addItem } = useCartStore();
 
   const scroll = (direction: string) => {
     if (scrollRef.current) {
@@ -34,6 +39,18 @@ export default function Home() {
         behavior: "smooth",
       });
     }
+  };
+
+  const addToCart = (product: Product) => {
+    addItem({
+      id: product.productId,
+      name: product.productName,
+      image: product.images ? product.images[0] : "/placeholder.svg",
+      quantity: 1,
+      price: product.price,
+    });
+
+    toast("Item added to cart");
   };
 
   // const getRandomProduct = (products: Product[]): Product | undefined => {
@@ -129,7 +146,7 @@ export default function Home() {
                           </span>
                         </CardContent>
                         <CardFooter className="flex justify-between">
-                          <Button>REORDER</Button>
+                          <Button onClick={() => addToCart(item)}>REORDER</Button>
                           <Link href={`/product/${path}`} >
                           <Button variant='outline'>VIEW</Button>
                           </Link>

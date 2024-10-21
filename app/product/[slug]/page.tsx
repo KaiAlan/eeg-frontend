@@ -26,11 +26,15 @@ import { AllProductsData } from "@/data/dummy/product";
 // import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useCartStore } from "@/stores/cart-store";
+import { Product } from "@/data/dummy/types";
+import { toast } from "sonner";
 
 const ProductView = ({ params }: { params: { slug: string } }) => {
   const [productName, productId] = decodeURIComponent(params.slug).split("--");
   const router = useRouter();
   const [quantity, setQuantity] = useState<number>(1);
+  const { addItem } = useCartStore()
   // const [selectedImage, setSelectedImage] = useState("/product/steel-main.png");
 
   // Handle increment
@@ -42,6 +46,18 @@ const ProductView = ({ params }: { params: { slug: string } }) => {
   const decrementQuantity = () => {
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
   };
+
+  const addToCart = (product: Product) =>  {
+    addItem({
+      id: product.productId,
+      name: product.productName,
+      image: product.images ? product.images[0]: '/placeholder.svg',
+      quantity: quantity,
+      price: product.price
+    })
+
+    toast("Item added to cart");
+  }
   const product = AllProductsData.find((product) => {
     if (
       product.productId === productId &&
@@ -262,6 +278,7 @@ const ProductView = ({ params }: { params: { slug: string } }) => {
                 <Button
                   size="lg"
                   className="w-full flex justify-center items-center gap-1 font-bold"
+                  onClick={() => addToCart(product)}
                 >
                   <Image
                     src="/icons/add-shopping-cart.svg"

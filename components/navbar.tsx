@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/sheet";
 import Sidebar from "./sidebar";
 import { SearchBox } from "./search";
+import Cart from "./cart";
 // import logo from './motxion-logo.svg'
 
 const Navbar = () => {
@@ -106,8 +107,7 @@ const Navbar = () => {
               />
             </div>
             </SheetTrigger>
-            <SheetContent side='right'>
-            </SheetContent>
+              <Cart />
             </Sheet>
         </div>
       </div>

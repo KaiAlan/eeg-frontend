@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,52 +13,40 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-
-const items = [
-  {
-    id: "EcoFusion",
-    label: "EcoFusion",
-  },
-  {
-    id: "UrbanBrew",
-    label: "UrbanBrew",
-  },
-  {
-    id: "LPP PRODS",
-    label: "LPP PRODS",
-  },
-  {
-    id: "FitGear",
-    label: "FitGear",
-  },
-  {
-    id: "GlowNaturals",
-    label: "GlowNaturals",
-  },
-  {
-    id: "LPP PRODS",
-    label: "LPP PRODS",
-  },
-] as const
+  // FormMessage,
+} from "@/components/ui/form";
+import { useFilterSellersStore } from "@/stores/filter-store";
 
 const FormSchema = z.object({
-  items: z.array(z.string()).refine((value) => value.some((item) => item), {
-    message: "You have to select at least one item.",
-  }),
-})
+  items: z
+    .array(z.string())
+    .refine((value) => value.some((item) => item), {
+      message: "You have to select at least one item.",
+    })
+    .optional(),
+});
 
-export function FilterSellerCheckbox() {
+export function FilterSellerCheckbox({
+  sellers,
+}: {
+  sellers: {
+    id: string;
+    label: string;
+  }[];
+}) {
+
+  const {  update } = useFilterSellersStore()
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      items: ["recents", "home"],
+      items: [],
     },
-  })
+  });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data)
+    if(data.items) {
+      update(data.items)
+    }
   }
 
   return (
@@ -68,14 +56,14 @@ export function FilterSellerCheckbox() {
           control={form.control}
           name="items"
           render={() => (
-            <FormItem>
+            <FormItem className="max-h-[200px] overflow-y-scroll">
               <div className="mb-4">
                 <FormLabel className="text-base">Available Sellers</FormLabel>
-                <FormDescription>
+                <FormDescription className="text-xs">
                   Select the sellers you want to see products of.
                 </FormDescription>
               </div>
-              {items.map((item, idx) => (
+              {sellers && sellers.map((item, idx) => (
                 <FormField
                   key={idx}
                   control={form.control}
@@ -91,12 +79,15 @@ export function FilterSellerCheckbox() {
                             checked={field.value?.includes(item.id)}
                             onCheckedChange={(checked) => {
                               return checked
-                                ? field.onChange([...field.value, item.id])
+                                ? field.onChange([
+                                    ...(field.value ?? sellers),
+                                    item.id,
+                                  ])
                                 : field.onChange(
                                     field.value?.filter(
                                       (value) => value !== item.id
                                     )
-                                  )
+                                  );
                             }}
                           />
                         </FormControl>
@@ -104,16 +95,16 @@ export function FilterSellerCheckbox() {
                           {item.label}
                         </FormLabel>
                       </FormItem>
-                    )
+                    );
                   }}
                 />
               ))}
-              <FormMessage />
+              {/* <FormMessage /> */}
             </FormItem>
           )}
         />
         <Button type="submit">Filter</Button>
       </form>
     </Form>
-  )
+  );
 }

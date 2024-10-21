@@ -37,12 +37,13 @@ const Sidebar = () => {
   return (
     <div className="w-full flex flex-col justify-start items-start space-y-1 gap-4">
       <div className="w-full flex flex-col justify-start items-start space-y-1 text-[#686E6F]">
-        <h1 className=" text-black text-lg font-medium">Trending</h1>
-        <div className="flex flex-col justify-start items-start pl-2 gap-2">
+        <Button variant='default' className=" w-full font-medium text-white">Open a product request</Button>
+        {/* <h1 className=" text-black text-lg font-medium">Trending</h1> */}
+        {/* <div className="flex flex-col justify-start items-start pl-2 gap-2">
           <span>Best Seller</span>
           <span>Best Deals</span>
           <span>New in Store</span>
-        </div>
+        </div> */}
       </div>
       <Separator />
       <div className="w-full flex flex-col justify-start items-start space-y-1 text-[#686E6F]">
