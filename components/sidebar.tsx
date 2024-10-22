@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 // import { NavConfig } from "@/config/nav";
 import OpenRequestCard from "./open-request-dialog";
 import { Separator } from "./ui/separator";
+import OpenRequestButton from "./open-request-button";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState<boolean[]>(
@@ -37,7 +38,9 @@ const Sidebar = () => {
   return (
     <div className="w-full flex flex-col justify-start items-start space-y-1 gap-4">
       <div className="w-full flex flex-col justify-start items-start space-y-1 text-[#686E6F]">
-        <Button variant='default' className=" w-full font-medium text-white">Open a product request</Button>
+        <OpenRequestButton className="w-full">
+          Open a product request
+        </OpenRequestButton>
         {/* <h1 className=" text-black text-lg font-medium">Trending</h1> */}
         {/* <div className="flex flex-col justify-start items-start pl-2 gap-2">
           <span>Best Seller</span>

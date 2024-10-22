@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 export function SortButton() {
-  const [position, setPosition] = React.useState("bottom")
+  const [sort, setSort] = React.useState("newest")
 
   return (
     <DropdownMenu>
@@ -24,10 +24,10 @@ export function SortButton() {
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>Sort by</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-          <DropdownMenuRadioItem value="top">Newest</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="bottom">In progress</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="right">Closed</DropdownMenuRadioItem>
+        <DropdownMenuRadioGroup value={sort} onValueChange={setSort}>
+          <DropdownMenuRadioItem value="newest">Newest</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="in progress">In progress</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="closed">Closed</DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>

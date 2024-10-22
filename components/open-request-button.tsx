@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 // import { Label } from "@/components/ui/label";
-import { Card, CardContent } from "./ui/card";
+// import { Card, CardContent } from "./ui/card";
 import { Textarea } from "./ui/textarea";
 // import Link from "next/link";
 
@@ -33,50 +33,42 @@ import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { openRequestSchema } from "@/schemas/open-request";
 import { useOpenRequestStore } from "@/stores/open-request-store";
-
-const OpenRequestDialog = () => {
-
-  const router = useRouter()
-  const { addRequest } = useOpenRequestStore();
-
-
-  const form = useForm<z.infer<typeof openRequestSchema>>({
-    resolver: zodResolver(openRequestSchema),
-    defaultValues: {
-      productCategory: "",
-      productSpecification: "",
-      quantity: "",
-      createdAt: new Date(),
-      status: 'in progress'
-    },
-  });
-
-
-  function onSubmit(values: z.infer<typeof openRequestSchema>) {
-
-    values.createdAt = new Date()
-    addRequest(values)
-
-    router.push('/product-request')
-    router.refresh()
-  }
-
-
+import { cn } from "@/lib/utils";
+const OpenRequestButton = ({className, children}:{className?: string; children: React.ReactNode}) => {
+    const router = useRouter()
+    const { addRequest } = useOpenRequestStore();
+  
+  
+    const form = useForm<z.infer<typeof openRequestSchema>>({
+      resolver: zodResolver(openRequestSchema),
+      defaultValues: {
+        productCategory: "",
+        productSpecification: "",
+        quantity: "",
+        createdAt: new Date(),
+        status: 'in progress'
+      },
+    });
+  
+  
+    function onSubmit(values: z.infer<typeof openRequestSchema>) {
+  
+      values.createdAt = new Date()
+      addRequest(values)
+  
+      router.push('/product-request')
+      router.refresh()
+    }
   return (
     <Dialog>
-      <Card className="bg-primary text-white text-lg font-semibold text-center rounded-md">
-        <CardContent className="pt-6 gap-4">
-          <p>Didn&apos;t find what you were looking for?</p>
           <DialogTrigger asChild>
             <Button
               variant="default"
-              className="mt-4 py-6 px-6 bg-black rounded-full font-semibold hover:bg-black/80"
+              className={cn("", className)}
             >
-              REQUEST HERE
+              {children}
             </Button>
           </DialogTrigger>
-        </CardContent>
-      </Card>
       <DialogContent className="sm:max-w-[1000px] px-[200px]">
         <DialogHeader className="w-full flex justify-center items-center">
           <DialogTitle className="text-2xl font-[600]">
@@ -154,7 +146,7 @@ const OpenRequestDialog = () => {
         </div>
       </DialogContent>
     </Dialog>
-  );
-};
+  )
+}
 
-export default OpenRequestDialog;
+export default OpenRequestButton
