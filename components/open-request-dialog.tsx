@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   //   DialogClose,
   DialogContent,
   DialogDescription,
@@ -145,10 +146,12 @@ const OpenRequestDialog = () => {
                   </FormItem>
                 )}
               />
+              <DialogClose>
               <Button type="submit" size="lg" className="px-3 text-lg py-4">
                 <span className="sr-only">Continue</span>
                 Continue
               </Button>
+              </DialogClose>
             </form>
           </Form>
         </div>

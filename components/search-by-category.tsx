@@ -10,17 +10,24 @@ import { AllProductsData } from "@/data/dummy/product";
 import { useCartStore } from "@/stores/cart-store";
 import { Product } from "@/data/dummy/types";
 import { toast } from "sonner";
+import { useEffect, useMemo, useState } from "react";
+import FilterSidebar from "./filter";
+import { useFilterSellersStore } from "@/stores/filter-store";
+import OpenRequestButton from "./open-request-button";
 
 const SearchByCategory = ({ category }: { category: string }) => {
   const router = useRouter();
   const { addItem } = useCartStore();
-  const data = AllProductsData.filter((product) => {
-    if (product.subCategory === category) {
-      return product;
-    } else if (product.seller.name === category) {
-      return product;
-    }
-  });
+  const { filterSellers } = useFilterSellersStore();
+  const [filteredData, setFilteredData] = useState<Product[]>([]);
+    // const {data, isLoading} = useGetSearchResults(category)
+
+
+    const data = useMemo(() => {
+      return AllProductsData.filter((product) => 
+        product.subCategory === category || product.seller.name === category
+      );
+    }, [category]);
 
   const addToCart = (product: Product) => {
     addItem({
@@ -34,24 +41,66 @@ const SearchByCategory = ({ category }: { category: string }) => {
     toast("Item added to cart");
   };
 
-  // const {data, isLoading} = useGetSearchResults(category)
-  // console.log(data?.results)
+  useEffect(() => {
+    if (!data) return;
+
+    if (filterSellers) {
+          // Directly set filtered data based on the category filter
+    const filteredProducts =
+    filterSellers.length > 0
+      ? data.filter((product) => filterSellers.includes(product.seller.name))
+      : data;
+
+  // Set the filtered data only if it has changed
+  if (
+    filteredProducts.length !== filteredData.length ||
+    !filteredProducts.every((value, index) => value.productId === filteredData[index]?.productId)
+  ) {
+    setFilteredData(filteredProducts);
+  }
+    } else {
+      setFilteredData(data);
+    }
+  }, [filterSellers, data]);
+
+
+
+
+  const sellers = useMemo(() => {
+    if (!data) return [];
+    return data.map((product) => ({
+      id: product.seller.name,
+      label: product.seller.name,
+    }));
+  }, [data]);
+
+
   // if (isLoading) {
-  //     return (
-  //         <Skeleton className="w-full h-full bg-muted-foreground" />
-  //     )
+  //   return (
+  //     <div className="max-w-screen p-4 animate-pulse flex justify-between">
+  //       <div className="w-[15%] h-[75vh] bg-gray-300 rounded-md"></div>
+  //       <div className="w-[83%] h-[75vh] bg-gray-300 rounded-md"></div>
+  //     </div>
+  //   );
   // }
 
-  if (data?.length === 0) {
+  if (!data) {
     return (
       <div className="w-full flex justify-center items-center text-xl">
         No Product Found
       </div>
     );
   }
+
+
   return (
+    <section className="flex mt-8 relative">
+    <aside className=" w-72 h-full desktop:flex flex-col justify-start items-start sticky top-24 overflow-y-scroll">
+      <FilterSidebar sellers={sellers} />
+    </aside>
+    <div className="max-w-[1176px] w-full flex flex-col justify-start px-4 mx-auto desktop:max-w-full desktop:mx-0 desktop:pl-12">
     <div className="w-full grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-      {data.map((item, index) => {
+      {filteredData.length > 0 ? filteredData.map((item, index) => {
         const path = encodeURIComponent(
           item.productName + "--" + item.productId
         );
@@ -112,8 +161,15 @@ const SearchByCategory = ({ category }: { category: string }) => {
             )}
           </Card>
         );
-      })}
+      }) : (
+        <div className="w-full flex flex-col justify-center items-center text-xl text-muted-foreground gap-6 absolute">
+          No Product Found
+          <OpenRequestButton>Open a product request</OpenRequestButton>
+        </div>
+      )}
     </div>
+    </div>
+    </section>
   );
 };
 

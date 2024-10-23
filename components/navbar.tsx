@@ -24,6 +24,7 @@ import Cart from "./cart";
 // import logo from './motxion-logo.svg'
 
 const Navbar = () => {
+  
   const router = useRouter();
   const pathname = usePathname();
   if (pathname.startsWith("/auth")) {
@@ -61,23 +62,28 @@ const Navbar = () => {
             </Button> */}
             <SearchBox />
           {/* </div> */}
+          <div className="flex justify-start items-end gap-1 cursor-pointer font-bold pr-6">
           <Link
             href="/account"
-            className={
-              pathname === "/"
-                ? "text-primary font-bold"
-                : "text-typeface-1 font-bold"
-            }
           >
-            <img
+            <div className="flex justify-start items-end gap-1">
+              <span className="flex flex-col justify-start text-white leading-4 pb-1">
+                <span className="text-[10px]">Hello,</span>
+                <span>John</span>
+              </span>
+              <img
               src="/icons/person.svg"
               alt="Logo"
-              className="w-10 z-[70] font-bold"
+              className="w-7 z-[70] font-bold text-white"
             />
+            </div>
+            
           </Link>
+          </div>
           <div className="flex justify-start items-end gap-1 cursor-pointer font-bold pr-6">
           <Link
             href="/"
+            className=" cursor-not-allowed"
           >
             <div className="flex justify-start items-end gap-1">
               <span className="flex flex-col justify-start text-white leading-4 pb-1">

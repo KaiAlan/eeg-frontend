@@ -104,10 +104,14 @@ const Sidebar = () => {
       <Separator />
       <div className="w-full flex flex-col justify-start items-start space-y-1 text-[#686E6F]">
         <h1 className=" text-black text-lg font-medium">Help and Settings</h1>
-        <div className="flex flex-col justify-start items-start pl-2 gap-2">
-          <span>Your Account</span>
-          <span>Customer Services</span>
+        <div className="w-full flex flex-col justify-start items-start pl-2 gap-2">
+          <Link href="/account" className="w-full">
+            <span>Your Account</span>
+          </Link>
+          <span className="cursor-not-allowed">Customer Services</span>
+          <Link href="/auth/login" className="w-full">
           <span>Sign In</span>
+          </Link>
         </div>
       </div>
       <Separator />
@@ -129,7 +133,7 @@ const Category = [
       "Aluminum Sheets",
       "Asphalt",
       "Concrete Mixers",
-      "Scaffolding",
+      // "Scaffolding",
     ],
   },
   {
@@ -142,7 +146,7 @@ const Category = [
       "Adhesives",
       "Power Tools",
       "Industrial Fans",
-      "Cooling Systems",
+      // "Cooling Systems",
     ],
   },
   {
@@ -151,8 +155,8 @@ const Category = [
       "Copper Wires",
       "Brass Fittings",
       "Motors",
-      "Ball Bearings",
-      "Gears",
+      // "Ball Bearings",
+      // "Gears",
     ],
   },
   {
@@ -162,23 +166,27 @@ const Category = [
       "Coal",
       "Solar Panels",
       "Wind Turbines",
-      "Fuel Tanks",
+      // "Fuel Tanks",
     ],
   },
   {
     name: "Machinery & Equipment",
     subCategory: [
       "Generators",
-      "Drilling Machines",
-      "Air Compressors",
-      "Excavators",
-      "Cranes",
-      "Bulldozers",
+      // "Drilling Machines",
+      // "Air Compressors",
+      // "Excavators",
+      // "Cranes",
+      // "Bulldozers",
     ],
   },
   {
     name: "Safety Gear",
-    subCategory: ["Safety Helmets", "Safety Boots", "Rubber Sheets"],
+    subCategory: [
+      "Safety Helmets",
+      // "Safety Boots",
+      // "Rubber Sheets"
+    ],
   },
   {
     name: "Transportation & Logistics",

@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getSearch } from "@/actions/search/search";
 
 import { Button } from "@/components/ui/button";
@@ -24,6 +24,10 @@ const FormSchema = z.object({
 
 export function SearchBox() {
   const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -32,9 +36,6 @@ export function SearchBox() {
     },
   });
 
-  const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [showSuggestions, setShowSuggestions] = useState(false);
 
   // Handle search key changes
   useEffect(() => {
@@ -70,7 +71,13 @@ export function SearchBox() {
 
   // Handle form submission
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    router.push(`/search/${data.searchKey}`);
+    if (data.searchKey) {
+      router.push(`/search/${data.searchKey}`);
+    }
+
+    if (inputRef.current) {
+      inputRef.current.value = '';
+    }
   }
 
   return (
@@ -88,10 +95,11 @@ export function SearchBox() {
                 <Input
                   {...field}
                   type="text"
+                  ref={inputRef}
                   className="h-full rounded-lg bg-white border-muted border-r-0 text-lg rounded-r-none"
                   onFocus={() => setShowSuggestions(true)}
                   onBlur={() =>
-                    setTimeout(() => setShowSuggestions(false), 200)
+                    setTimeout(() => setShowSuggestions(false), 100)
                   } // Add a slight delay to allow selection
                 />
               </FormControl>

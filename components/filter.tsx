@@ -16,15 +16,29 @@ import { Label } from "@/components/ui/label";
 import { FilterSellerCheckbox } from "./filter/seller";
 import { Card, CardContent } from "./ui/card";
 
-import { cn } from "@/lib/utils";
-import { Slider } from "@/components/ui/slider";
+// import { cn } from "@/lib/utils";
+// import { Slider } from "@/components/ui/slider";
 import OpenRequestDialog from "./open-request-dialog";
+import React from "react";
 
+const FilterSidebar = ({
+  sellers,
+  // maxPrice,
+  // onPriceChange,
+}: {
+  sellers: {
+    id: string;
+    label: string;
+  }[];
+  // maxPrice: number;
+  // onPriceChange: (value: number[]) => void;
+}) => {
+  // const [sliderValue, setSliderValue] = React.useState<number[]>([maxPrice]);
+  // // const [filterdSellers, setFilteredSellers] = React.useState()
 
-const FilterSidebar = ({sellers}:{sellers: {
-  id: string;
-  label: string;
-}[]}) => {
+  // const handleValueChange = (value: number[]) => {
+  //   onPriceChange(value);
+  // };
   return (
     <div className="w-full flex flex-col justify-start items-start space-y-1 gap-4">
       <Dialog>
@@ -72,20 +86,23 @@ const FilterSidebar = ({sellers}:{sellers: {
         </CardContent>
       </Card>
 
-      <div className="w-full flex flex-col justify-start items-start gap-2">
+      {/* <div className="w-full flex flex-col justify-start items-start gap-2">
         <h1>Price range</h1>
         <div className="w-full flex justify-start items-start gap-2 text-muted-foreground relative">
-            <Slider
-            defaultValue={[50]}
-            max={100}
+          <Slider
+            defaultValue={[maxPrice]}
+            max={maxPrice}
             step={1}
+            onValueChange={handleValueChange}
             className={cn("w-full mb-6")}
-            />
-
-            <span className="absolute top-2 left-0">$0</span>
-            <span className="absolute top-2 right-0">$10000</span>
+          />
+          <span className="absolute top-2 left-0">$0</span>
+          <span className="absolute top-2 right-0">${maxPrice}</span>
         </div>
-      </div>
+        <p className="text-xs text-muted-foreground">
+          Current Price Range: 0-{sliderValue[0]}
+        </p>
+      </div> */}
 
       <OpenRequestDialog />
     </div>

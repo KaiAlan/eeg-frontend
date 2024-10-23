@@ -103,7 +103,7 @@ export default function Home() {
                       return (
                         <Card
                         key={index}
-                        className=" max-w-[240px] min-w-[230px] rounded-sm select-none cursor-pointer relative"
+                        className=" max-w-[240px] min-w-[230px] rounded-sm select-none relative"
                       >
                         <CardContent className="flex flex-col gap-2 pt-6">
                         <div className="flex flex-col max-w-[200px] max-h-[200px]">
