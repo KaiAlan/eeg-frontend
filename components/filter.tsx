@@ -19,13 +19,13 @@ import { Card, CardContent } from "./ui/card";
 // import { cn } from "@/lib/utils";
 // import { Slider } from "@/components/ui/slider";
 import OpenRequestDialog from "./open-request-dialog";
-import React from "react";
+import React, { useState } from "react";
 
 const FilterSidebar = ({
   sellers,
-  // maxPrice,
-  // onPriceChange,
-}: {
+}: // maxPrice,
+// onPriceChange,
+{
   sellers: {
     id: string;
     label: string;
@@ -33,12 +33,23 @@ const FilterSidebar = ({
   // maxPrice: number;
   // onPriceChange: (value: number[]) => void;
 }) => {
+  const [postalCode, setPostalCode] = useState("");
   // const [sliderValue, setSliderValue] = React.useState<number[]>([maxPrice]);
   // // const [filterdSellers, setFilteredSellers] = React.useState()
 
   // const handleValueChange = (value: number[]) => {
   //   onPriceChange(value);
   // };
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPostalCode(event.target.value);
+  };
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    // console.log(postalCode); // You can handle the submission as needed
+  };
+
   return (
     <div className="w-full flex flex-col justify-start items-start space-y-1 gap-4">
       <Dialog>
@@ -47,7 +58,7 @@ const FilterSidebar = ({
             variant="outline"
             className="w-full rounded-full border-muted-foreground font-medium"
           >
-            Add Location
+            {postalCode ? `Postal code: ${postalCode}` : 'Add Location'}
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-md">
@@ -55,7 +66,7 @@ const FilterSidebar = ({
             <DialogTitle>Choose your location</DialogTitle>
             <DialogDescription>Enter a valid postal code.</DialogDescription>
           </DialogHeader>
-          <div className="flex items-center space-x-2">
+          {/* <div className="flex items-center space-x-2">
             <div className="grid flex-1 gap-2">
               <Label htmlFor="location" className="sr-only">
                 Postal code
@@ -70,7 +81,30 @@ const FilterSidebar = ({
               <span className="sr-only">Apply</span>
               Apply
             </Button>
-          </div>
+          </div> */}
+          <form onSubmit={handleSubmit} className="flex items-center space-x-2">
+            <div className="grid flex-1 gap-2">
+              <Label htmlFor="postal-code" className="sr-only">
+                Postal code
+              </Label>
+              <Input
+                id="postal-code"
+                value={postalCode}
+                onChange={handleInputChange}
+                placeholder="Enter postal code"
+              />
+            </div>
+            <DialogClose asChild>
+            <Button
+              type="submit"
+              size="sm"
+              className="px-3 bg-primary text-white font-semibold"
+            >
+              <span className="sr-only">Apply</span>
+              Apply
+            </Button>
+            </DialogClose>
+          </form>
           <DialogFooter className="sm:justify-start">
             <DialogClose asChild>
               {/* <Button type="button" variant="secondary" className="">
