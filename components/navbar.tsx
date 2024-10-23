@@ -62,7 +62,7 @@ const Navbar = () => {
             <SearchBox />
           {/* </div> */}
           <Link
-            href="/auth/login"
+            href="/account"
             className={
               pathname === "/"
                 ? "text-primary font-bold"

@@ -3,11 +3,11 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
-// import { useGetSearchResults } from "@/data/search";
+import { useGetSearchResults } from "@/data/search";
 import Image from "next/image";
-// import { Skeleton } from "./ui/skeleton";
+import { Skeleton } from "./ui/skeleton";
 import { Button } from "./ui/button";
-import { AllProductsData } from "@/data/dummy/product";
+// import { AllProductsData } from "@/data/dummy/product";
 import { useCartStore } from "@/stores/cart-store";
 import { Product } from "@/data/dummy/types";
 import { toast } from "sonner";
@@ -18,15 +18,15 @@ const SearchResults = ({searchKey}: {searchKey: string}) => {
 
   console.log(searchKey)
     const router = useRouter();
-    const data = AllProductsData;
+    // const data = AllProductsData;
     const { addItem } = useCartStore();
-    // const {data, isLoading} = useGetSearchResults(searchKey)
+    const {data, isLoading} = useGetSearchResults(searchKey)
     // console.log(data?.results)
-    // if (isLoading) {
-    //     return (
-    //         <Skeleton className="w-full h-full bg-muted-foreground" />
-    //     )
-    // }
+    if (isLoading) {
+        return (
+            <Skeleton className="w-full h-full bg-muted-foreground" />
+        )
+    }
 
     const addToCart = (product: Product) => {
       addItem({

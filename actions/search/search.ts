@@ -1,16 +1,6 @@
 "use server"
 
-type Product = {
-    id: number;
-    name: string;
-    description: string;
-    price: string; // Consider using number if you want to handle it as a numeric value
-    seller: number;
-    created_at: string; // You might want to use Date if you parse it
-    category: string;
-    quantity: number;
-    seller_name: string;
-};
+import { Product } from "@/data/dummy/types";
 
 // const base_url = process.env.BACKEND_BASE_URL
 

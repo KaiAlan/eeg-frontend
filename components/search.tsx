@@ -45,7 +45,7 @@ export function SearchBox() {
 
         if (results.length > 0) {
           const only_names = results.map(
-            (product) => product.name
+            (product) => product.productName
           );
           setSuggestions(only_names);
           setShowSuggestions(true);
