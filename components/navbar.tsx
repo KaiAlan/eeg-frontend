@@ -21,9 +21,13 @@ import {
 import Sidebar from "./sidebar";
 import { SearchBox } from "./search";
 import Cart from "./cart";
+// import useChatPanelStore from "@/stores/chat-panel";
+import { cn } from "@/lib/utils";
 // import logo from './motxion-logo.svg'
 
 const Navbar = () => {
+
+  // const {isChatOpen} = useChatPanelStore()
   
   const router = useRouter();
   const pathname = usePathname();
@@ -31,7 +35,7 @@ const Navbar = () => {
     return;
   }
   return (
-    <nav className="w-full backdrop-blur-lg font-josefinSans font-normal fixed top-0 left-0 right-0 bg-primary z-50">
+    <nav className={cn("w-full backdrop-blur-lg font-josefinSans font-normal fixed top-0 left-0 right-0 bg-primary z-50")}>
       <div className="max-w-[1512px] w-full flex justify-between items-center gap-6 py-4 pt-6 mx-auto text-lg text-typeface-2 px-8">
         <div className="flex justify-start items-center gap-10">
           <Link

@@ -4,6 +4,8 @@ import { Toaster } from "@/components/ui/sonner";
 import Navbar from "@/components/navbar";
 import "./globals.css";
 import Providers from "./providers";
+import ChatBubble from "@/components/chat-bubble";
+import ChatPanel from "@/components/chat-panel";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,17 +32,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen flex flex-col bg-background antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen flex flex-col justify-center items-center bg-background antialiased`}
       >
-        <Providers>
-          <div className="w-full relative">
-            <Navbar />
-          </div>
-          <main className="max-w-[1512px] w-full mx-auto px-8 py-20 pt-40 out:px-0">
-            {children}
-          </main>
-          <Toaster />
-        </Providers>
+        <ChatPanel>
+          <ChatBubble>
+            <Providers>
+              <div className="w-full relative">
+                <Navbar />
+              </div>
+              <main className="max-w-[1512px] w-full mx-auto px-8 py-20 pt-40 out:px-0">
+                {children}
+              </main>
+              <Toaster />
+            </Providers>
+          </ChatBubble>
+        </ChatPanel>
       </body>
     </html>
   );
