@@ -43,7 +43,7 @@ const Navbar = () => {
             className="text-white font-semibold uppercase h-full"
           >
             {/* <img src="/motxion-logo.svg" alt="Logo" className="w-8 z-[70] font-bold" /> */}
-            Logo
+            EEG
           </Link>
           
         </div>

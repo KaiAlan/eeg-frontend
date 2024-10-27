@@ -37,7 +37,8 @@ export function useChatAi() {
             setIsTyping(false); // End typing effect
         },
         retry: 3,
-        onError: () => {
+        onError: (error) => {
+            console.log(error)
             updateLastMessage('Something went wrong. Please try again.');
             setIsTyping(false);
         },
