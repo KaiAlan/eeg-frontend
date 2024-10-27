@@ -7,7 +7,7 @@ type ChatResponseType = {
 }
 
 
-export const getChatResponse = async({value}:{value: string}): Promise<ChatResponseType> => {
+export const getChatResponse = async ({value}:{value: string}): Promise<ChatResponseType> => {
     const options = {
         method: "GET",
         headers: {

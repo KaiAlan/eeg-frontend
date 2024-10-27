@@ -26,7 +26,7 @@ export function useChatAi() {
       };
     // const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: ({ value }: { value: string }) => getChatResponse({ value }),
+        mutationFn: async ({ value }: { value: string }) => getChatResponse({ value }),
         onMutate: () => {
             addMessage({ sender: 'Doc Intel', text: 'Thinking...' }); // Add placeholder message
             setIsTyping(true); // Start typing effect
@@ -36,6 +36,7 @@ export function useChatAi() {
             await simulateTypingEffect(data.answer); // Simulate typing
             setIsTyping(false); // End typing effect
         },
+        retry: 3,
         onError: () => {
             updateLastMessage('Something went wrong. Please try again.');
             setIsTyping(false);
