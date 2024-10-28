@@ -15,7 +15,7 @@ export const getChatResponse = async ({value}:{value: string}): Promise<ChatResp
         },
     };
 
-    const response = fetch(
+    const response = await fetch(
         `https://eegai-production.up.railway.app/api/chat?question=${value}`,
         options
     )
