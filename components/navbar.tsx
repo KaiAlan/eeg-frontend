@@ -48,7 +48,7 @@ const Navbar = () => {
               alt='logo'
               width={0}
               height={0}
-              className="w-32 h-16"
+              className="w-32 h-12"
             />
             {/* EEG */}
           </Link>
