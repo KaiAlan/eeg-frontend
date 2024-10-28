@@ -23,6 +23,7 @@ import { SearchBox } from "./search";
 import Cart from "./cart";
 // import useChatPanelStore from "@/stores/chat-panel";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 // import logo from './motxion-logo.svg'
 
 const Navbar = () => {
@@ -40,10 +41,16 @@ const Navbar = () => {
         <div className="flex justify-start items-center gap-10">
           <Link
             href="/"
-            className="text-white font-semibold uppercase h-full"
+            className="text-white font-semibold uppercase "
           >
-            {/* <img src="/motxion-logo.svg" alt="Logo" className="w-8 z-[70] font-bold" /> */}
-            EEG
+            <Image 
+              src='/eeg-logo.png'
+              alt='logo'
+              width={0}
+              height={0}
+              className="w-32 h-16"
+            />
+            {/* EEG */}
           </Link>
           
         </div>
