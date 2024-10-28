@@ -50,7 +50,7 @@ const ProductRequestPage = () => {
   }, [sortOption, requests]);
 
   return (
-    <div className="flex flex-col justify-start items-center gap-12 py-10">
+    <div className="flex flex-col justify-start items-start gap-12">
       <div className="w-full flex justify-between items-center">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

@@ -10,7 +10,7 @@ import Person from "@/public/icons/person-gray.svg";
 const AccountPage = () => {
   const { user } = useUserStore();
   return (
-    <div className="w-full flex flex-col justify-start items-start gap-8">
+    <div className="w-full flex flex-col justify-start items-start gap-8 pt-10">
       <div className="w-full flex justify-between items-end">
         <div className="flex flex-col justify-center items-center">
           <Image

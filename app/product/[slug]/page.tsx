@@ -81,7 +81,7 @@ const ProductView = ({ params }: { params: { slug: string } }) => {
     );
   }
   return (
-    <div className="w-full h-full flex flex-col justify-start items-start gap-10">
+    <div className="w-full h-full flex flex-col justify-start items-start gap-10 pt-20">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>

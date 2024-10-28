@@ -101,7 +101,7 @@ const DiscountedProductsPage = () => {
   const sellers = getSellers();
 
   return (
-    <section className="flex mt-8 relative">
+    <section className="flex mt-8 relative pt-10">
       <aside className=" w-72 max-h-[90vh] desktop:flex flex-col justify-start items-start sticky top-24 overflow-y-scroll">
         <FilterSidebar
           sellers={sellers}

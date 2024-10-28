@@ -59,7 +59,7 @@ export default function RootLayout({
               <div className="w-full relative">
                 <Navbar />
               </div>
-              <main className="max-w-[1512px] w-full mx-auto px-8 py-20 pt-40 out:px-0">
+              <main className="max-w-[1512px] w-full mx-auto px-8 py-20">
                 {children}
               </main>
               <Toaster />

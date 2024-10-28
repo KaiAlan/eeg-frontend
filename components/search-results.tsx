@@ -85,7 +85,7 @@ const SearchResults = ({ searchKey }: { searchKey: string }) => {
   }
 
   return (
-    <div className="flex mt-8 relative">
+    <div className="flex mt-8 relative pt-10">
       <aside className="w-72 h-full desktop:flex flex-col justify-start items-start sticky top-24 overflow-y-scroll">
         <FilterSidebar sellers={sellers} />
       </aside>

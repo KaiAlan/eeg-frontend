@@ -161,7 +161,7 @@ const formatMessage = (text: string) => {
   return (
     <ResizablePanelGroup
       direction="horizontal"
-      className="min-h-screen max-w-[1517px]"
+      className="max-w-[1517px]"
     >
       <ResizablePanel defaultSize={70}>{children}</ResizablePanel>
       <ResizableHandle withHandle />

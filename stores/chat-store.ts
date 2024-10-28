@@ -17,7 +17,7 @@ interface ChatState {
 }
 
 export const useChatStore = create<ChatState>((set) => ({
-  chatHistory: [{ sender: 'Doc Intel', text: 'Hi Jhon! How can I help you today?' }],
+  chatHistory: [{ sender: 'Doc Intel', text: 'Hi John! How can I help you today?' }],
   message: '',
   isTyping: false,
   setMessage: (value) => set({ message: value }),
