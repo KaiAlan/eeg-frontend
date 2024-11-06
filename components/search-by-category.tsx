@@ -94,11 +94,11 @@ const SearchByCategory = ({ category }: { category: string }) => {
 
 
   return (
-    <section className="flex mt-8 relative">
+    <section className="flex relative">
     <aside className=" w-72 h-full desktop:flex flex-col justify-start items-start sticky top-24 overflow-y-scroll">
       <FilterSidebar sellers={sellers} />
     </aside>
-    <div className="max-w-[1176px] w-full flex flex-col justify-start px-4 mx-auto desktop:max-w-full desktop:mx-0 desktop:pl-12">
+    <div className="max-w-[1176px] w-full h-full flex flex-col justify-start px-4 mx-auto desktop:max-w-full desktop:mx-0 desktop:pl-12">
     <div className="w-full grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
       {filteredData.length > 0 ? filteredData.map((item, index) => {
         const path = encodeURIComponent(

@@ -166,7 +166,7 @@ const formatMessage = (text: string) => {
       <ResizablePanel defaultSize={70}>{children}</ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={30} minSize={30}>
-        <div className="fixed max-h-screen h-full max-w-[30%] w-full flex flex-col items-start justify-start pt-32 px-4">
+        <div className="fixed max-h-screen h-full max-w-[30%] w-full flex flex-col items-start justify-start pt-36 px-4">
           <div className="w-full flex justify-between items-center">
             <span className="text-sm font-bold text-primary">Doct Intl</span>
             <Button
@@ -178,7 +178,7 @@ const formatMessage = (text: string) => {
               <CrossCircledIcon className="w-6 h-6 text-red-600" />
             </Button>
           </div>
-          <div className="w-full flex flex-col justify-between max-h-screen h-full pb-10 text-xs">
+          <div className="w-full flex flex-col justify-between h-full pb-4 text-xs">
             <div className="flex flex-col w-full gap-4 overflow-y-scroll">
               {/* <div className="w-full flex flex-col justify-start items-start gap-1">
                 <span className="flex justify-start items-end gap-1">

@@ -21,11 +21,11 @@ const BrowseProduct = async ({ params }: { params: { slug: string } }) => {
 
 
   return (
-    <div>
       <HydrationBoundary state={dehydrate(queryClient)}>
+        <div className="w-full min-h-screen h-full flex flex-col justify-start items-start gap-10 pt-20">
             <SearchByCategory category={category} />
+        </div>
       </HydrationBoundary>
-    </div>
   );
 };
 
